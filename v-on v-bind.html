@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on v-bind</title>
+</head>
+<body>
+<!--因为它们都是属性，所以我们可以用 v-bind  v-bind:class-->
+                <!-- 完整语法 -->
+                <a v-bind:href="url">...</a>
+                <!-- 缩写 -->
+                <a :href="url">...</a>
+
+                <a v-on:click="test">...</a>
+                <a @click="test">...</a>
+</body>
+</html>

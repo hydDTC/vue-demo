@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>起步</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+        <div id="app">
+            {{ message }}
+            <span v-bind:title="message1">
+            鼠标悬停此处几秒，
+            可以看到此处动态绑定的 title！
+            </span>
+            <span v-if="seen">你看见我了吗</span>
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+            <button v-on:click="reverseMessage">翻转 message</button>
+            {{mes}}
+            <input v-model="mes">
+        </div>
+
+
+        <script>
+            // Vue.js 的核心是，可以采用简洁的模板语法来声明式的将数据渲染为 DOM：
+            var app = new Vue({
+                el: '#app',
+                data: {  // 数据处理
+                    message : 'hello Vue!',
+                    message1: '页面加载于 ' + new Date().toLocaleString(),
+                    seen:false,
+                    todos : [
+                        { text: '学习 JavaScript' },
+                        { text: '学习 Vue' },
+                        { text: '创建激动人心的代码' }
+                    ],
+                    mes : 'hyd'  //变量一定要初始化0
+                },
+                methods:{  // 所有的方法
+                    reverseMessage: function () {
+                        console.log(this.message.split('')) // 数组
+                        console.log(this.message.split('').reverse())
+                        console.log(this.message.split('').reverse().join('')) //字符串
+                        this.message = this.message.split('').reverse().join('')
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

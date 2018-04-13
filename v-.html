@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<!--当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM-->
+        <div id="one">
+            <span v-once>这个将不会改变: {{ msg }}</span>
+            {{msg}}<input type="text" v-model="msg">
+            <hr/>
+            <p>Using mustaches: {{ rawHtml }}</p>
+            <!--斜体字-->
+            <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+            <hr/>
+            <button v-bind:disabled="isButtonDisabled">Button</button>
+            <hr/>
+            <!--半角符号-->
+            <!--<form v-on:submit.prevent="onSubmit">...</form>-->
+        </div>
+</body>
+</html>
+
+
+<script>
+    var vm = new Vue ({
+        el : '#one',
+        data: {
+            msg: 'hello',
+            rawHtml: '<i>hahhaha</i>',
+            isButtonDisabled: undefined
+        }
+    });
+</script>
