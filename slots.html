@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slots</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+        <div id="example">
+            <!--也可以传递一个变量-->
+            <button @click="add">点击</button>
+            <my-hello :mes="message" ref="child">{{message}}</my-hello>
+        </div>
+
+        <template id="hello">
+            <div>
+                <div> 我是组件里面的东西{{mes}}{{nameAge}} </div>
+                <slot></slot>
+            </div>
+        </template>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello',
+            name:'hyd'
+        },
+        components:{
+            'my-hello': {
+                'template':'#hello',
+                 props:['mes'],
+                data(){                 //组件的格式是方法
+                  return {
+                      nameAge:''
+                  }
+                }
+            }
+        },
+        methods:{
+            add(){
+                this.$refs.child.nameAge = this.name;
+                console.log('哈哈')
+            }
+        }
+    })
+</script>
